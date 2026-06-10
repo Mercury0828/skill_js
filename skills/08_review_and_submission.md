@@ -21,7 +21,11 @@ Revise in explicit owner-approved phases (typically: experiments → model secti
 - Every change-log records: pages, errors, undefined refs/citations, overfull/underfull counts — distinguishing pre-existing from newly introduced.
 - Visual artifacts (TikZ, plots): crop-render at 300 dpi (`pdftoppm -png -r 300 …`) and inspect before declaring done; quick previews miss overlaps.
 
+## Post-revision fresh-reader logic pass [rule, Jason 2026-06-10]
+After every major revision cycle, a clean-context reviewer (no memory of the edits) reads the paper front to back as a first-time reader, hunting specifically for: logic holes and non-sequiturs; concepts used before they are introduced; numbers/claims updated in one location but not in their echoes (abstract ↔ intro ↔ body ↔ caption ↔ conclusion); narrative discontinuities left by section-local edits; references to figures/tables that changed meaning. Section-local resolution rounds systematically create these seams — the global pass is what closes them.
+
 ## Page-limit passes (measured, not vibes)
+**Page budgets are FILL targets [rule, Jason 2026-06-10]: a stated content-page limit means filling those pages completely, never "under is fine"; for a 10-page-total paper, keep references ≤ 30 entries.** When under budget, the fill priority is new evidence (experiments, tables, verification figures) over prose padding.
 Locate the overflow precisely (which page, how many columns of what). Then pull levers in order of information loss:
 1. Font step-downs (displays, captions, tables, algorithms);
 2. Subsection merges and redundant-proposition removal;
