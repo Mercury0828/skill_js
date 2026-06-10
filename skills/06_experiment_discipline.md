@@ -24,6 +24,9 @@ A "90% credible-interval empirical coverage ∈ [88%, 92%]" unit test on the ful
 - **No suspicious roundness:** values all on a 0.05 grid read as fabricated; real pipelines produce irregular digits.
 - **Figures:** regenerate from tracked code only (never hand-edit an image); render at 300 dpi and visually inspect for overlaps/clipping/label collisions before declaring done; match sibling-figure aspect ratios by MEASURING axes boxes, not eyeballing.
 
+## Place experiments ON the theory's regime map (PROSE Phase 4)
+When a baseline you expected to lose is winning, first check whether the config sits in a theory-predicted degenerate regime — the first PROSE smoke landed exactly in the derived never-probe region, so "no differentiation" was a *validation*, not a failure. Use the theory to PLACE the experiment: compute the geometry that makes the interesting behavior possible (e.g., truth-variability > decision-margin > achievable-estimate-precision, with the arithmetic in the config comments), and keep one degenerate-regime point in the final sweep as an anchor (it shows the theory predicting its own baseline's success). Corollary rules: (1) honest-baseline tuning — set each baseline to its best plausible parameters before comparing (a mistuned trigger threshold = strawman); (2) when a resource is perishable, opportunity cost is a shadow price (displaced demand), not a list price — naive per-unit pricing makes optimal policies look absurdly conservative; metrics must then separate "consumed slack" from "displaced service".
+
 ## Robustness & ablation patterns
 - Misspecification test: ground truth from a richer process than the model assumes (e.g., regime-switching truth vs smooth model) — show graceful degradation.
 - One ablation per anticipated reviewer attack, planned in the guide (the ablation IS the rebuttal).
