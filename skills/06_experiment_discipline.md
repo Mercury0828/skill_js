@@ -33,6 +33,46 @@ When an ablation GRANTS a baseline some free capability ("what if they had feedb
 ## Sweep design under saturation constraints (PROSE Phase 5)
 When the state variable saturates (here w ≤ 1), a single-knob sweep (intensity q at fixed reversion κ) silently exits the model's validity region at one end. Joint sweeps that hold an invariant fixed (constant stationary amplitude: κ ∝ q) keep every point valid and often produce a cleaner x-axis ("drift RATE at fixed wander amplitude"). State the invariant in the config comments and report the sweep design as a logged decision.
 
+## Make required orderings structural, then assert them (ENCORE Phase 1)
+When acceptance criteria demand set/metric orderings (robust ⊆ nominal, humid ⊆ dry,
+pre-conditioned ⊇ baseline), first check whether a *confounder* in the model can break
+the ordering for non-bug reasons — then pin the confounder so the ordering becomes
+structural, and assert it programmatically with solver-tolerance slack. ENCORE example:
+letting COP co-vary with humidity makes a kW power cut thermally cheaper on humid days,
+pushing the humid frontier OUTSIDE the dry one — the required "humid ⊆ dry" assertion
+would fail for a physically-true but mechanism-confounding reason. Fix: hold wet-bulb
+fixed across the comparison so humidity acts only through the mechanism under study
+(condensation floor), log the decoupling as a decision with the physical caveat, and
+re-introduce the confounder in the uncertainty-model phase. Corollary: any monotonicity
+you assert across a bisection-computed frontier needs slack = a few × bisection
+tolerance, and prefix-property trace design (truncating the disturbance, not re-drawing
+it) makes duration-monotonicity structural instead of statistical.
+
+## Layered validation for geometric/surrogate objects (ENCORE Phase 2)
+When a computed object (projected polytope, tabulated lookup, fitted surrogate) stands
+in for an exact optimization, cross-validate in three separated layers, each with its
+own pass bar: (A) **exactness layer** — the representation vs the exact computation at
+points where they should agree EXACTLY (on-grid): bar ~100%, any miss = the route is
+broken; (B) **designed-conservatism layer** — the deployed object with its off-grid
+snapping/rounding vs exact, on continuum samples: bar = the acceptance number, and
+mismatches must be ONE-SIDED (zero anti-conservative errors — a single unsafe "member"
+is a bug, 2% safe refusals are a design parameter); (C) **non-circular physics layer** —
+re-simulate optimizer-produced trajectories on the fine-grained simulator and check
+constraints, since A and B share the same model and cannot catch
+discretization/dynamics inconsistency. Report the three numbers separately; a single
+blended "agreement %" hides which failure mode you have. Bonus: layer C surfaces real
+intra-step constraint excursions between control-grid marks — bound them and fold the
+bound into later robustness margins rather than densifying the grid.
+
+## Calibration-circularity honesty (ENCORE Phase 0)
+If free coefficients are FIT to reproduce a literature anchor, the "experiment
+reproducing the anchor" passes by construction — say so in the self-audit, and state
+what the genuine content is (that plausible parameter values achieve the anchor at
+all, i.e., feasibility of the calibration, not validation). The trend-band acceptance
+(e.g., 40–75% around a 63% anchor) is then a sanity guard on the fit's plausibility,
+not evidence. Real validation needs the source's curve shape or independent data;
+log that as an open risk, not a footnote.
+
 ## Robustness & ablation patterns
 - Misspecification test: ground truth from a richer process than the model assumes (e.g., regime-switching truth vs smooth model) — show graceful degradation.
 - One ablation per anticipated reviewer attack, planned in the guide (the ablation IS the rebuttal).

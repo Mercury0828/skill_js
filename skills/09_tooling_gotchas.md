@@ -22,6 +22,18 @@
 - Each agent prompt carries: 3-line project context, exact per-item output format, naming convention, and the "final message is consumed programmatically" line — otherwise you get prose summaries instead of data.
 - Spot-check any agent-supplied quote that carries decision weight against the source text yourself.
 
+## Polytope / optimization libraries (ENCORE Phase 2)
+- `pypoman.project_polytope(method="bretl")` asserts `eq is not None` — for pure-
+  inequality systems, append a dummy variable pinned to 0 by one equality; Bretl–Lall
+  then works and scales with OUTPUT complexity (vertices of the 2-D shadow), not input
+  dimension — 14-D lifted systems project in ~0.2 s. The cdd path
+  (`project_polyhedron`) returns duplicated vertices; dedupe before hulling.
+- `scipy.spatial.ConvexHull.equations` gives H-reps ([A, -b] rows) and `.volume` is
+  AREA in 2-D — cheap membership tests and polygon metrics without extra deps.
+- Empty/degenerate projection slices (infeasible parameter combos) are data, not
+  errors: catch the exception, store an explicit empty marker, and report the count —
+  silent exclusion reads as coverage.
+
 ## Web fetching
 - arXiv HTML (`arxiv.org/html/<id>` or ar5iv) beats PDF extraction for targeted Q&A on recent papers.
 - Semantic Scholar API rate-limits (429) without a key; Unpaywall API is a reliable open-access checker.
