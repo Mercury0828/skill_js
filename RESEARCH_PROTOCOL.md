@@ -15,7 +15,7 @@
 
 - **2026-06-10 — Auto-continue phases (Jason).** After a phase closes cleanly (self-audit PASS, no fatal/major blocker requiring Jason), automatically proceed to the next phase. Non-major decisions: the agent decides per its own recommendation and LOGS the decision; only genuinely major decisions (story-changing, scope-changing, spend-changing) wait for Jason.
 
-- **2026-06-10 — Page budgets are FILL targets (Jason).** A stated content-page limit (e.g., "9 pages") ALWAYS means fill those pages completely — never "≤ limit is fine". For a 10-page-total paper, references must not exceed 30 entries.
+- **2026-06-10 — Page budgets are FILL targets (Jason; refined 2026-06-10).** A stated content-page limit x is a RANGE target: x ≤ content ≤ x+0.5 pages (e.g., INFOCOM 9pp content + 1pp references: content between 9 and 9.5). Never under x; up to half a page spilling into the reference page is fine. For a 10-page-total paper, references must not exceed 30 entries.
 - **2026-06-10 — Post-revision full-document logic pass (Jason).** After every major revision cycle, perform a front-to-back logical-consistency read of the whole paper from a fresh reader's perspective (clean-context reviewer): logic holes, forward references, claims updated in one place but not another, narrative discontinuities.
 
 *(awaiting further directives)*
