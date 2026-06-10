@@ -1,0 +1,10 @@
+*.pdf binary
+*.parquet binary
+*.pkl binary
+*.png binary
+*.jpg binary
+*.md text
+*.py text
+*.yaml text
+*.tex text
+*.bib text

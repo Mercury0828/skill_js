@@ -1,0 +1,26 @@
+# Skill 07 — Writing & the anti-AI-flavor system
+
+The operational checklist lives at `templates/AI_STYLE_CHECKLIST.md` — copy it into each project and run it as written. This file explains the system around it.
+
+## Collect writing assets from day 0
+`docs/writing_assets.md` accumulates: frozen gap sentence, framing soundbites, quotable theory lines, title candidates, contribution-statement drafts, anticipated-rebuttal stubs. Phases ADD to it (a good quotable line discovered during theory work goes in immediately). Writing the paper then starts from assets, not from a blank page.
+
+## The two-level anti-AI-flavor method
+1. **Grep token sweep** — mechanical pass over banned/flagged tokens (em-dash glue, "such as", "not only…but also", transition fluff, vague verbs enable/leverage/facilitate, empty adjectives comprehensive/novel/seamless, over-broad nouns framework/paradigm/mechanism, "we aim to", the "not X, it is Y" construction, defensive hedging). Every hit becomes a numbered proposal.
+2. **Read-level checks** — repetition of sentence templates, stacked abstract-noun strings, metaphor/adjective density, passive-voice excess, template openers ("X is no longer just…"), advertising tone in contributions, defensive paragraphs. Plain-and-understandable-for-a-non-expert is the top priority.
+
+## Process rules for style editing [rule]
+- **Propose-then-approve, one by one.** Numbered list with before→after; apply ONLY what the owner approves. Never auto-apply rewrites.
+- **No nitpicking:** if a checked item holds up, say "fine"; no forced findings; prefer one-line surgical edits.
+- **Never add defensive/justification prose** to answer a critique — hedging is itself an AI tell and introduces new errors. State facts plainly; keep necessary limitations as plain statements.
+- **Respect the reword bound:** if it's already clear, leave it. (The "AI reword spiral" — each pass making prose worse — is real and observed.)
+- Distinguish *methodological contrast* ("learns from A rather than B" — keep) from *defensive* "rather than" ("we use X rather than to claim Y" — rewrite).
+
+## Structural writing rules
+- The strongest neighbor gets invited in and killed by us, in our words, with a table and a transplanted baseline — never left for Reviewer 2 to discover.
+- Narrow gap statements are assets, not weaknesses: "practitioners already do X ad-hoc; the theory of X does not exist" is the best motivation structure available.
+- One remark maximum per out-of-scope concern (the guide pre-writes these remarks); scope creep in prose is as real as in code.
+- Contribution statements: specific, limited, credible — each maps to a theorem/figure that exists.
+
+## Cross-document consistency (end of writing phase)
+Tables ↔ figures ↔ prose ↔ abstract ↔ conclusion numbers reconciled in one dedicated sweep; every number in prose traced to its generating artifact.

@@ -1,0 +1,28 @@
+# Results: keep summary csv/png only
+results/**
+!results/**/
+!results/**/*.csv
+!results/**/*.png
+
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+.venv/
+venv/
+
+# Data artifacts
+*.parquet
+*.pkl
+
+# LaTeX build noise (keep tracked main.pdf if the project tracks it)
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.synctex.gz
+
+# OS noise
+Thumbs.db
+.DS_Store
