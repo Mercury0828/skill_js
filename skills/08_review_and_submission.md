@@ -6,6 +6,12 @@
 3. **Single-verifier resolution rounds** against the frozen table: agent proposes fixes per concern → owner approves → serial execution → full re-audit. New issues found mid-round get appended with a flag, not silently mixed in.
 4. One atomic change-log per task (files touched, before→after snippets, build status) — auditable at line level, never compressed into vague bullets.
 
+## Lessons from a live five-reviewer cycle (PROSE Phase 7)
+- Distinct reviewer lenses catch DISJOINT A-level issues: the data reviewer found number drift, the physics reviewer found a non-implementable primitive, the TPC reviewer found evaluation-scale gaps, the math reviewer found a surrogate-objective gap in a guarantee chain, the style reviewer found defensive framing. None overlapped. Cross-reviewer CONSENSUS items (the same flaw hit from different angles) are the highest-confidence fixes — resolve them first.
+- Answer evaluation-scale and "your-method's-delta-is-invisible" concerns with NEW EXPERIMENTS, not prose; place the new experiment using the theory's regime map (a first attempt that lands in a degenerate regime wastes a run), and use PAIRED per-seed differences to resolve overlapping-CI policy comparisons (paired CI shrank a 0.25 gap from ambiguous to 17/20-seeds decisive).
+- Double-rounding is a systematic error source: log prints 3 decimals → phase report quotes them → paper re-rounds. Re-derive every paper number from the generating CSVs directly (the data reviewer's mandate should say so explicitly).
+- Guarantee-chain audits: when a paper claims constant γ from a cited algorithm family, verify the DEPLOYED variant's constant and the OBJECTIVE the guarantee is certified on (surrogate vs true) — the single most-flagged issue across three independent reviewers.
+
 ## Revision phasing
 Revise in explicit owner-approved phases (typically: experiments → model section → intro/abstract/conclusion-numbers → methodology light-touch → final terminology/claims sweep), not scattershot. Reconcile all numbers at the phase that touches them.
 
