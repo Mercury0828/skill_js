@@ -13,4 +13,6 @@
 - **2026-06-10 — Startup package usage.** New projects launch per START_HERE.md: Jason supplies guide.md + repo; the agent seeds from templates/ and executes phases under skills/ protocols.
 - **2026-06-10 — Immediate skill migration (Jason).** The moment a generalizable lesson/technique of value is discovered during project work, add it to skill_js AND push — do not wait for phase boundaries. Phase boundaries remain a sweep checkpoint, not the trigger.
 
+- **2026-06-10 — Auto-continue phases (Jason).** After a phase closes cleanly (self-audit PASS, no fatal/major blocker requiring Jason), automatically proceed to the next phase. Non-major decisions: the agent decides per its own recommendation and LOGS the decision; only genuinely major decisions (story-changing, scope-changing, spend-changing) wait for Jason.
+
 *(awaiting further directives)*
