@@ -8,6 +8,9 @@
 ## Simulator-vs-theory unit tests (acceptance criteria, not afterthoughts)
 The simulator must reproduce the theory it will test: estimator-variance formulas within CI across the parameter range; stationary distributions (KS test); posterior calibration (empirical coverage of 90% credible intervals ∈ [88%, 92%] over long runs); composition/conservation laws. These tests gate the simulator phase.
 
+## Posterior-calibration coverage tests catch estimator bugs nothing else catches (PROSE Phase 3)
+A "90% credible-interval empirical coverage ∈ [88%, 92%]" unit test on the full filter pipeline caught three real bugs in one session, none visible in variance-formula tests alone: (1) simulation params violating the model's own validity stipulation (state pinned at a clip boundary); (2) plug-in variance labels collapsing to zero at a boundary outcome (estimate=perfect ⇒ label=0 ⇒ filter overconfident); (3) **label–noise correlation bias** — any measurement-variance label computed from the noisy realization itself over-trusts upward-noisy readings and biases the posterior (~0.6σ); fix = certainty-equivalence labeling (evaluate the label at the filter's predicted mean, not at the estimate). Debug coverage failures quantitatively: compute empirical z-scores (error/posterior-sd); z-mean ≠ 0 means bias (look for label or model asymmetries), z-sd ≠ 1 means mis-scaled variance. Document the resulting operating envelope (e.g., minimum batch size) as a design constraint for downstream components.
+
 ## Baseline hygiene
 - Name baselines after the prior work they implement ("X-style periodic", "Y-style fixed-fraction") — every named baseline doubles as a citation and a rebuttal.
 - Include: an oracle upper bound, a degenerate lower bound (never-act), the natural heuristic, and one baseline transplanted from the most dangerous classical lookalike (answers "old wine" with data).
