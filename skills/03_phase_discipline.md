@@ -26,3 +26,21 @@ At a pre-agreed midpoint: tag + bundle `src + experiments + tests + configs + DE
 - Stochastic checks: repeat 5–10×, report the stable rate; one PASS is not verified. [rule]
 - Independent review = one-shot clean-context subagent with the question + all artifacts + "return one complete, decisive recommendation"; no resumable review threads. [rule]
 - Before any state-changing/destructive operation on artifacts you didn't create: look first; if reality contradicts the description, surface it instead of proceeding.
+
+## Verification tooling as committed scripts, not shell history (EAGER Phase 1B)
+Commit the phase-gate protocol as two one-command scripts at Phase 0/1, then
+reuse them at EVERY later gate:
+- **Repeat runner** (`scripts/run_repeat_suite.py`): N subprocess pytest runs
+  of the flaky-prone marker (`-m stochastic`), junitxml into a TEMP dir (test
+  hygiene), aggregated into a per-test pass-count table, non-zero exit unless
+  every test is N/N. The table is the PHASE_STATUS evidence artifact.
+- **Clean-state verifier** (`scripts/clean_state_verify.py`): fresh `git
+  clone` + fresh venv + install, run the end-to-end artifact script BEFORE
+  the test suite, run pytest, run the script again; require byte-identical
+  script output and an unchanged file-tree snapshot (diff excluding
+  interpreter/runner caches: __pycache__, .pytest_cache, *.egg-info). The
+  tree diff catches test pollution that `git status` misses because ignored
+  paths (results/) don't show there.
+Rationale: the per-phase protocol (fresh checkout, 10× repeats, no-pollution
+sandwich) degrades into unreproducible shell history unless it is code; a
+verifier that exits non-zero also composes into CI later. [rule]

@@ -94,6 +94,25 @@ assertions for the robust controller are conditioned on the do-nothing baseline
 ("never worse than idle + modeling tolerance"), because exogenous tail events that
 overwhelm a non-participant are outside any certificate's scope.
 
+## Counter-based CRN for stochastic simulators (EAGER Phase 1B)
+When a simulator has any Bernoulli/stochastic element AND baselines will be
+compared on it, route ALL stochasticity through a counter-based RNG keyed on
+semantic coordinates — `outcome(run_seed, <where>, <which>, <when>)` via a
+per-draw Philox (key = run seed, counter = the coordinates; numpy Philox
+construction is ~µs, no need to vectorize at 1e5-draw test scale). Payoffs,
+each worth a property test that gates the phase: (1) order independence —
+same coords, same draw, regardless of query order; (2) cross-policy
+coincidence — two different policies under the same seed face identical luck
+wherever their action patterns coincide, which is exactly what makes
+CRN-paired baseline comparisons valid; (3) bit-identical cross-process
+replay (subprocess-twice test, byte-equal stdout incl. a trajectory hash);
+(4) frequency within the 99% CI of p over >=1e5 draws (deterministic given
+the seed, so the test is stable forever once green); (5) a p=1 ==
+deterministic-mode trajectory-equivalence anchor pinning the two semantics
+together. Corollary: keep the CRN engine strictly separate from every other
+RNG (instance generators, torch), and reserve a stream constant per
+stochastic element so future ones can't collide.
+
 ## Robustness & ablation patterns
 - Misspecification test: ground truth from a richer process than the model assumes (e.g., regime-switching truth vs smooth model) — show graceful degradation.
 - One ablation per anticipated reviewer attack, planned in the guide (the ablation IS the rebuttal).
