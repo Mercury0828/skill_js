@@ -9,6 +9,11 @@ The operational checklist lives at `templates/AI_STYLE_CHECKLIST.md` — copy it
 1. **Grep token sweep** — mechanical pass over banned/flagged tokens (em-dash glue, "such as", "not only…but also", transition fluff, vague verbs enable/leverage/facilitate, empty adjectives comprehensive/novel/seamless, over-broad nouns framework/paradigm/mechanism, "we aim to", the "not X, it is Y" construction, defensive hedging). Every hit becomes a numbered proposal.
 2. **Read-level checks** — repetition of sentence templates, stacked abstract-noun strings, metaphor/adjective density, passive-voice excess, template openers ("X is no longer just…"), advertising tone in contributions, defensive paragraphs. Plain-and-understandable-for-a-non-expert is the top priority.
 
+## Style-sweep failure modes caught by the owner (PROSE Phase 7) [rule]
+1. **The sweep is per-batch, not per-paper.** Every batch of NEW prose (revision rounds, added paragraphs, rewritten abstract) gets its own checklist pass before commit. A one-time sweep early in writing left 45 em-dashes in the final draft because later rounds kept adding them — the owner caught it from the abstract alone.
+2. **Em-dash bar is near-zero, parenthetical pairs included.** A lenient audit ("most are legitimate paired insertions") is wrong: the owner's standard treats `---x---` pairs as the primary AI tell. Replacements: paired → commas or parentheses or sentence split; single → colon or comma. Legitimate exceptions only: table N/A cells, code comments, proper-noun en-dashes (Ornstein--Uhlenbeck, Cauchy--Schwarz).
+3. **Inline proofs are part of venue style.** If the reference paper puts `\begin{proof}` blocks right after every theorem/prop/lemma, do the same from the first draft — retro-fitting nine proofs costs a page of budget juggling.
+
 ## Process rules for style editing [rule]
 - **Propose-then-approve, one by one.** Numbered list with before→after; apply ONLY what the owner approves. Never auto-apply rewrites.
 - **No nitpicking:** if a checked item holds up, say "fine"; no forced findings; prefer one-line surgical edits.
