@@ -21,6 +21,9 @@ Revise in explicit owner-approved phases (typically: experiments → model secti
 - Every change-log records: pages, errors, undefined refs/citations, overfull/underfull counts — distinguishing pre-existing from newly introduced.
 - Visual artifacts (TikZ, plots): crop-render at 300 dpi (`pdftoppm -png -r 300 …`) and inspect before declaring done; quick previews miss overlaps.
 
+## Algorithm boxes are code — audit them like code (PROSE Phase 7)
+After rewriting a pseudocode box, re-derive its decision rules algebraically: a price/penalty term that is CONSTANT across candidates cancels out of an argmax (an `argmax (g_a − Q·c_a/V)/c_a` made the queue price algebraically inert — the controller's headline mechanism did nothing, contradicting the surrounding theorem; the fix moved the price into the stopping condition). Checklist per box: every symbol bound (REQUIRE or text), every variable assigned before use (a queue update referenced P(t) that nothing assigned), vector-vs-scalar bookkeeping consistent (a per-link slack vector had a scalar deducted), and comments use the paper's notation, not implementation slang.
+
 ## Post-revision fresh-reader logic pass [rule, Jason 2026-06-10]
 After every major revision cycle, a clean-context reviewer (no memory of the edits) reads the paper front to back as a first-time reader, hunting specifically for: logic holes and non-sequiturs; concepts used before they are introduced; numbers/claims updated in one location but not in their echoes (abstract ↔ intro ↔ body ↔ caption ↔ conclusion); narrative discontinuities left by section-local edits; references to figures/tables that changed meaning. Section-local resolution rounds systematically create these seams — the global pass is what closes them.
 
