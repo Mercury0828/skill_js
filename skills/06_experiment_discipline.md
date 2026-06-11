@@ -113,6 +113,34 @@ together. Corollary: keep the CRN engine strictly separate from every other
 RNG (instance generators, torch), and reserve a stream constant per
 stochastic element so future ones can't collide.
 
+## Iterate-to-acceptance & polish-before-delivery (Jason's standing directive, 2026-06-11) [rule]
+The delivery contract: what reaches the owner is finished work that has met
+the pre-registered acceptance bar — not a progress report of half-working
+runs. Operationally:
+- **Iterate relentlessly on what is OURS to change**: bugs, our method's
+  design and hyperparameters, experiment design, instance/parameter coverage,
+  runtime. Loop until the bar is met; do not hand off before.
+- **Freeze what has passed**: validated experiments and their recorded
+  numbers are immutable; later work must not churn them (re-running for a
+  changed upstream decision gets its own logged decision entry and a fresh
+  evidence block, never an in-place edit).
+- **Failures are triaged, never shipped raw and never hidden**: classify
+  bug-vs-finding with evidence (skill 03). Bugs → fix → rerun. Genuine
+  findings (a baseline unexpectedly strong, an effect regime-dependent) →
+  characterize the mechanism and boundary, escalate for a framing ruling,
+  and present ON OUR TERMS — the EAGER D35→D38 case is the template: the
+  "failed" criterion became a characterized regime map plus a planned
+  ablation, strictly more publishable than the original expectation.
+- **Forbidden moves** (they produce retractable papers and violate the
+  anti-fabrication rules above): weakening a defined baseline, seed
+  shopping, silently dropping unfavorable instances, moving an acceptance
+  bar without an owner-ratified decision entry, presenting a tuned-regime
+  result as a universal claim.
+- **Post-result self-review gate**: after results land, a detailed pass —
+  imperfections? coverage gaps? statistical strength? presentation? — and
+  refinement loops until the pass is clean; only then hand off for
+  acceptance.
+
 ## Robustness & ablation patterns
 - Misspecification test: ground truth from a richer process than the model assumes (e.g., regime-switching truth vs smooth model) — show graceful degradation.
 - One ablation per anticipated reviewer attack, planned in the guide (the ablation IS the rebuttal).
