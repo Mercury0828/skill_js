@@ -16,6 +16,9 @@ The operational checklist lives at `templates/AI_STYLE_CHECKLIST.md` — copy it
 - **Respect the reword bound:** if it's already clear, leave it. (The "AI reword spiral" — each pass making prose worse — is real and observed.)
 - Distinguish *methodological contrast* ("learns from A rather than B" — keep) from *defensive* "rather than" ("we use X rather than to claim Y" — rewrite).
 
+## Captions: minimal [rule, Jason 2026-06-10 — supersedes the earlier "what/how/takeaway" reading]
+Figure and table captions are SHORT — typically one sentence stating what is shown plus the conditions (seeds, axes, special markers); at most two sentences when a table needs a bold/dash legend. Takeaways, mechanisms, and numbers belong in the body text, never in the caption. When trimming an over-long caption, first move any caption-only fact into the body (don't delete evidence), then cut.
+
 ## Structural writing rules
 - The strongest neighbor gets invited in and killed by us, in our words, with a table and a transplanted baseline — never left for Reviewer 2 to discover.
 - Narrow gap statements are assets, not weaknesses: "practitioners already do X ad-hoc; the theory of X does not exist" is the best motivation structure available.
