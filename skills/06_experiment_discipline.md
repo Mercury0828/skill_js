@@ -76,6 +76,24 @@ all, i.e., feasibility of the calibration, not validation). The trend-band accep
 not evidence. Real validation needs the source's curve shape or independent data;
 log that as an open risk, not a footnote.
 
+## Operating-point semantics drift across optimizer/simulator (ENCORE Phases 4-6)
+When an optimizer assumes an operating point (ready state, setpoint, initial SoC) and a
+separate simulator implements the operating POLICY, audit the pair explicitly — three
+distinct bugs in one project came from this seam: (1) the robust optimizer's own start
+state violated its robustified constraint (pre-cooled to the nominal floor, certified
+against the robust floor → every certificate infeasible from its own ready state);
+(2) the simulator parked idle plants at the optimizer's aggressive operating point,
+so deeper Monte-Carlo sampling showed even the DO-NOTHING baseline violating limits —
+an idle-policy artifact misread as a robustness failure; (3) a "return-to-start"
+terminal constraint (the lazy stand-in for a proper terminal SET) collapsed the
+feasible region to nothing. Rules: the no-action baseline controller must implement
+the baseline DEFINITION exactly (if the settlement baseline says "nominal hold", idle
+hours hold nominal, not "convenient nearby state"); robust decision objects must be
+feasible from the start states the policy actually produces (assert it); acceptance
+assertions for the robust controller are conditioned on the do-nothing baseline
+("never worse than idle + modeling tolerance"), because exogenous tail events that
+overwhelm a non-participant are outside any certificate's scope.
+
 ## Robustness & ablation patterns
 - Misspecification test: ground truth from a richer process than the model assumes (e.g., regime-switching truth vs smooth model) — show graceful degradation.
 - One ablation per anticipated reviewer attack, planned in the guide (the ablation IS the rebuttal).
