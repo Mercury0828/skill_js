@@ -18,7 +18,7 @@
 | 8 | `we aim to` `we seek to` `we attempt to` | Say what was done. |
 | 9 | `in this paper, we propose` `the proposed` `robust and efficient` | Trim; state the result, don't advertise. |
 | 10 | `not X, it is Y` / `The real problem is not A, it is B` | Rewrite. EXCEPTION: genuine mathematical disambiguation ("the set is not a product…, it is a single coupling") is exposition — keep. |
-| 11 | Defensive hedging: `not a claim` `we do not (claim|interpret)` `this is not intended` `should not be (interpreted|read|taken)` `we make no claim` `we (emphasize|stress|caution)` `does not (imply|claim)`; defensive `rather than` | Rewrite to plain statements of fact. KEEP `rather than` that draws a core methodological contrast ("learns from control cost rather than prediction error"). |
+| 11 | Defensive hedging: `not a claim` `we do not (claim|interpret)` `this is not intended` `should not be (interpreted|read|taken)` `we make no claim` `we (emphasize|stress|caution)` `does not (imply|claim)`; `rather than` (any use) | Rewrite to plain statements of fact. `rather than` is BANNED outright [rule, Jason 2026-06-11]: restructure or split into two sentences; state the contrast positively ("learns from A, not B" or two sentences). The earlier methodological-contrast exception is revoked. |
 
 ## B. Read-level checks (whole-document pass)
 1. Plain and understandable for a non-expert reviewer = top priority; no homemade jargon; define once in full, then use the short form.

@@ -19,7 +19,7 @@ The operational checklist lives at `templates/AI_STYLE_CHECKLIST.md` — copy it
 - **No nitpicking:** if a checked item holds up, say "fine"; no forced findings; prefer one-line surgical edits.
 - **Never add defensive/justification prose** to answer a critique — hedging is itself an AI tell and introduces new errors. State facts plainly; keep necessary limitations as plain statements.
 - **Respect the reword bound:** if it's already clear, leave it. (The "AI reword spiral" — each pass making prose worse — is real and observed.)
-- Distinguish *methodological contrast* ("learns from A rather than B" — keep) from *defensive* "rather than" ("we use X rather than to claim Y" — rewrite).
+- "rather than" is BANNED outright [rule, Jason 2026-06-11]: restructure or split into two sentences; state the contrast positively ("learns from A, not B" or two sentences). The earlier methodological-contrast exception is revoked.
 
 ## Captions: minimal [rule, Jason 2026-06-10 — supersedes the earlier "what/how/takeaway" reading]
 Figure and table captions are SHORT — typically one sentence stating what is shown plus the conditions (seeds, axes, special markers); at most two sentences when a table needs a bold/dash legend. Takeaways, mechanisms, and numbers belong in the body text, never in the caption. When trimming an over-long caption, first move any caption-only fact into the body (don't delete evidence), then cut.
