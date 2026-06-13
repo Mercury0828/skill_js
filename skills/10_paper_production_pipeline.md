@@ -87,3 +87,51 @@ owner for acceptance.
   and is fixable by the same review loop.
 - Keep the experiment runners' `--config=` and `--plot-only` switches: reviewer
   responses become one-line reruns instead of new scripts.
+
+## Reference replication is a DISTINCT TASK TYPE [rule, learned the hard way on WEFT 2026-06-13]
+
+When the owner names a reference paper to follow ("参考这篇论文的写法、章节分布、
+组件内容"), the task is STRUCTURE REPLICATION, not free generation. Success means
+matching the reference's structure and components, not producing a reasonable
+paper. The reference overrides your generic "what a conference paper looks like"
+prior. On WEFT, missing this cost a full structural rewrite after the owner
+returned 10+ corrections; the failure traced to five stacked causes, root first:
+
+- ROOT: misclassified the task as free generation, so I judged the draft by "is
+  this a reasonable INFOCOM paper?" (yes) instead of "does this mirror the
+  reference's structure?" (no). Every other cause is a symptom of this one.
+- Overrode the explicit instruction with a generic prior (treated my default as
+  more authoritative than the owner's example).
+- Trusted memory of the reference instead of a line-by-line component checklist
+  (the same "never trust prose memory" rule I enforce for result numbers, not
+  transferred to writing).
+- Optimized "page-limit compliance" (compress, omit components) instead of "match
+  the reference's density" (fill, build components) — the page limit is a FILL
+  target [x, x+0.5], never a ceiling to satisfy by compressing.
+- Skipped a pre-writing alignment checkpoint, so the structural mismatch surfaced
+  only in review when a full draft already existed.
+
+MANDATORY ordered steps when a reference is named:
+1. RECLASSIFY out loud: success = matching the reference; the reference beats your
+   prior; deviations need the owner's sign-off.
+2. READ EVERY SECTION FILE of the reference (system model, methodology,
+   experiments), not just main.tex + intro — the structure lives in those files.
+3. BUILD A COMPONENT-MAPPING TABLE (reference component -> our instance) covering:
+   intro subsections + literature review + positioning table; each body section's
+   subsection count and page length; a MAIN all-baselines result table; a FORMAL
+   proof under every theorem/prop (never a "sketch" if the reference proves in
+   full); figure TYPES (match the mix — if the reference uses line/schematic
+   figures and ZERO heatmaps, do not substitute heatmaps); related-work PLACEMENT
+   (CDRO put it inside the intro, not a late standalone section); experiment-SETUP
+   depth (environment, data, baselines, protocol — CDRO's setup names the
+   implementation, run times, operating ranges, plant params, and EVERY baseline);
+   page fill to [x, x+0.5] using the reference's DENSITY as the baseline.
+4. CONFIRM THE MAPPING WITH THE OWNER before writing prose (pre-writing alignment
+   checkpoint); raise any intended deviation here, not in review.
+5. TICK THE TABLE mechanically while writing; never rely on memory that a
+   component was covered.
+
+The protocol costs ten minutes of outlining; skipping it cost a full structural
+rewrite (intro doubled, Section II expanded, main result table built, T1 proof
+formalized, related work folded into the intro, heatmaps cut, topology schematic
+added, experiment setup quadrupled). That asymmetry is the rule.
