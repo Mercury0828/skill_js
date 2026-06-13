@@ -39,6 +39,38 @@ what the intro defined; using a coined family name in Sec. III that Sec. IV
 defines; once-only acronyms), and a cross-location number echo check
 (abstract = intro = body = table = caption = conclusion).
 
+## Evaluation prose = analysis, not narration [rule, owner standing, WEFT 2026-06-13]
+
+The figure or table carries the NUMBERS; the prose must carry the WHY. The
+common failure is evaluation text that narrates the artifact —"DLS reaches
+$\alpha_c=0.25$ on QFT and a worst-case regret of 38%"— which has zero marginal
+value because the reader already sees the table. Owner ruling: "实验结果分析
+经常会写成图表的内容复述，没有一点深度，这很不好。应该多一些有深度的分析，
+少一些数据结果陈述。删掉的数据结果陈述可以留空间给更多实验结果."
+
+What evaluation prose must contain instead, per result:
+- MECHANISM: why this fabric wins this workload (DLS's adjacent-group ring turns
+  the dragonfly's single inter-group hop into a parallel short path exactly
+  where banded demand concentrates).
+- IMPLICATION: what it means for the design decision (so a deployment expecting
+  hub/band traffic should buy ring augmentation, not bisection).
+- CONNECTION: tie back to theory/the law/the cost trade (the winner moves with N
+  exactly as $\eta^\ast(N)$ predicts).
+- SURPRISE: where intuition or the prior fails (the worst cut is ball-shaped,
+  not the symmetric cut classical bisection would pick).
+
+The deletion test: strike every sentence that would still be true if the reader
+saw only the table. If little survives, the paragraph was narration — rewrite it
+as the four items above. The numbers stay in ONE place (the float); cite them in
+prose only when the analysis turns on a specific value.
+
+This compounds with the figures-over-prose rule: when over the page budget, cut
+the NARRATION sentences, not figures — "图有些少了，文字有些多了" (owner). A
+systems paper persuades visually; the freed space buys MORE EVIDENCE (another
+scale, an ablation, an execution-time validation), which is worth more than any
+amount of restated prose. Less narration + deeper analysis + more experiments is
+the same move three times.
+
 ## Phase W4 — Multi-reviewer simulation (the core quality mechanism)
 Launch 4+ one-shot clean-context reviewers IN PARALLEL with disjoint mandates and
 structured-table output contracts:
