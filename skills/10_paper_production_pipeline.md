@@ -71,6 +71,44 @@ scale, an ablation, an execution-time validation), which is worth more than any
 amount of restated prose. Less narration + deeper analysis + more experiments is
 the same move three times.
 
+## Scope is a model definition, not a confession [rule, owner standing, WEFT 2026-06-13]
+
+Do NOT expose the work's own limits defensively: no "Limitations" or "Future
+Work" section, no "our model does not capture X", no "we leave Y to future
+work", no circuitous hedging that catalogues what the method can't do. Owner
+ruling: "我不希望论文中出现 limitation、future work 这样的内容，也不要迂回/
+过度防御式的写作来暴露我们的缺陷或限制，这会变成 reviewer 攻击我们的靶子." A
+limitations paragraph is a bullseye you paint on yourself; reviewers attack the
+attack surface you hand them.
+
+This does NOT mean hide the scope — an unscoped claim is an overclaim a reviewer
+also punishes. It means state scope as a CONFIDENT MODEL DEFINITION, positively:
+- Define the world you study as the system, not as a list of omissions. "We
+  study a memoryless heralded-entanglement fabric metering attempt-rate budgets"
+  — not "our model lacks quantum memories, swapping, and per-gate fidelity, left
+  to future work."
+- Frame an assumption's evidence as a STRENGTH. The retry-dependence of an
+  average-rate LP becomes "source-side retry, which the fabric implements,
+  recovers the rate to within 1.3%" — not "the LP assumes retry; without it we
+  lose 42–46% (a limitation)."
+- Replace concession with a logical bound. "We could not solve the dense LP for
+  this candidate, so we gave it the oracle value" (a visible patch) becomes "its
+  worst-case regret is already 67.1% from an exactly-scored scenario; the
+  intractable ones can only raise it, so the pick stands regardless" (an
+  argument that needs nothing from the hard case).
+- Tone-down via PRECISION, not apology: a reviewer asking you to "downscope"
+  wants the claim to match what you showed (qualify "synthesis" to
+  "structured-family search validated against free-form synthesis"), not a
+  paragraph of mea culpa. The qualifier rides in the abstract's framing ("under
+  a memoryless heralded-entanglement model"), woven naturally, once.
+
+The reconciliation with reviewers who ask you to "acknowledge the proxy":
+satisfy them with PRECISION (define exactly what the metric is), not with a
+defensive disclaimer. Sweep the draft for `future work | limitation | we do not
+| cannot | left as | not modeled | delimit | assumptions bound` and rewrite each
+hit as a positive model statement, a strength, or a bound — or delete it if it
+only restated scope already implied by the model definition.
+
 ## Phase W4 — Multi-reviewer simulation (the core quality mechanism)
 Launch 4+ one-shot clean-context reviewers IN PARALLEL with disjoint mandates and
 structured-table output contracts:
